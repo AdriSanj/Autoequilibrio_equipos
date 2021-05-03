@@ -96,7 +96,7 @@ def player_selection(L):
     if L_size % 2 == 0:
         # Se ejecutan estos bucles en caso de que el numero de jugadores
         # sea par.
-        for i in range(int(L_size/2)):
+        for i in range(int(L_size/2.)):
             L1.append(L[Inputs[i]])
         for j in range(int(L_size/2.), L_size):
             L2.append(L[Inputs[j]])
