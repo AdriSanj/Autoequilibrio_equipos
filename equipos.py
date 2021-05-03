@@ -34,7 +34,7 @@ Jugadores = [p1, p2, p3, p4, p5, p6, p7, p8]
 
 err_puntuacion = 3
 
-T1,T2 = team_asignation(Jugadores, 3)
+T1,T2 = team_asignation(Jugadores, err_puntuacion)
 
 print("Equipo 1")
 print("Integrantes:")
