@@ -11,7 +11,7 @@ from math import trunc
 #----------------------------------------------------------#
 
 class Player:
-    def __init__(self, name , stats):
+    def __init__(self, name, stats):
         # Inicialización de la clase.
         self.set_name(name)
         self.set_stats(stats)
@@ -96,7 +96,7 @@ def player_selection(L):
     if L_size % 2 == 0:
         # Se ejecutan estos bucles en caso de que el numero de jugadores
         # sea par.
-        for i in range(int(L_size/2.)):
+        for i in range(int(L_size/2)):
             L1.append(L[Inputs[i]])
         for j in range(int(L_size/2.), L_size):
             L2.append(L[Inputs[j]])
@@ -127,5 +127,46 @@ def team_asignation(L, err_puntuacion = 3):
             break
     
     return T1, T2
+
+#----------------------------------------------------------#
+
+def read_stat_doc(archive = 'stats.txt'):
+    # Solo leemos el archivo, no lo modificamos.
+    f = open(archive, 'r')
+
+    n_players = int(f.readline())
+    N_players = []      # Lista de nombres.
+    S_players = []      # Lista de puntuaciones.
+
+    for i in range(n_players):
+        line = f.readline()
+        line =  line.split(',')         # El archivo se separa por comas.
+        N_players.append(line[0])       # El primer elemento es el nombre,
+        S_players.append(float(line[1]))# el segundo los stats
+    
+    # Cerramos el documento al finalizar la lectura.
+    f.close()
+
+    #print(N_players)
+    #print(S_players)
+
+    # Normalización de las puntuaciones:
+    
+    S_max = max(S_players)      # Puntuación máxima.
+    
+    # Dividimos cada puntuación entre la máxima, multiplicamos por diez
+    # y se redondea.
+    for i in range(n_players):
+        S_players[i] = round(10*S_players[i]/S_max)
+    
+    #print(S_players)
+    
+    # Creamos la lista de jugadores, usando la clase Player.
+    Players = []
+
+    for i in range(n_players):
+        Players.append(Player(N_players[i],S_players[i]))
+        
+    return Players
 
 #----------------------------------------------------------#

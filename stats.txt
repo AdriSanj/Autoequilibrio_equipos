@@ -1,0 +1,9 @@
+8
+Adri, 4728
+Alex, 5231
+Anton, 4821
+Hans, 5532
+Helena, 5679
+Pablo, 6537
+Raku, 5109
+Saul, 6583
